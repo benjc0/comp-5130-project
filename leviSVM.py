@@ -31,7 +31,7 @@ df_clean = df.dropna(subset=['flipper_length_mm', 'bill_length_mm'])
 attributes = df_clean[['flipper_length_mm','bill_length_mm']].values
 type_label = np.where(df_clean['species']=='Adelie', 0, 1)
 
-model = svm.SVC(kernel='linear')
+model = svm.SVC(kernel='linear') #could add C paramter here (default value 1)
 model.fit(attributes, type_label)
 
 # Hyperplane
@@ -74,6 +74,30 @@ def Adelie_or_Gentoo(bill_length_mm, flipper_length_mm):
 
 #predict if adelie or gentoo
 Adelie_or_Gentoo(36.7, 195)
+# Add SVM labels into the DataFrame
+df_clean['Type'] = type_label
+
+# Plot the data using seaborn
+sns.lmplot(
+    x='flipper_length_mm',
+    y='bill_length_mm',
+    data=df_clean,
+    hue='Type',
+    palette='Set1',
+    fit_reg=False,
+    scatter_kws={"s": 70}
+)
+
+# Plot SVM decision boundary
+plt.plot(xx, yy, linewidth=2, color='black')
+
+# Plot point (36.7, 195)
+plt.plot(195, 36.7, 'yo', markersize=9)
+
+plt.xlabel("Flipper Length (mm)")
+plt.ylabel("Bill Length (mm)")
+plt.show()
+
 
 Adelie_or_Gentoo(54.5, 212)
 
