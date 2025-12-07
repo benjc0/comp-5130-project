@@ -20,3 +20,16 @@ Libraries used:
 - seaborn (version 0.13.2)
 - matplotlib (version 3.8.0)
 - scikit-learn (version 1.7.2)
+
+# HOW TO RUN THROUGH TERMINAL
+
+python main.py
+python leviSVM.py
+
+# JUPYTER NOTEBOOK FILES
+
+File: levi_svm.ipynb
+
+or
+
+File: svm_Alex.ipynb
